@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import Posts from '../Posts/Posts';
+import Header from '../Header/Header';
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -10,11 +11,12 @@ const Home = () => {
         .then(data => setPosts(data))
     }, []);
     return (
-        <div>
+        <Container maxWidth="sm">
+            <Header />
             {
                 posts.map(post => <Posts post={post} key={post.id}/>)
             }
-        </div>
+        </Container>
     );
 };
 

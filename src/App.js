@@ -9,6 +9,7 @@ import {
 import Home from './components/Home/Home';
 import NoMatch from './components/NoMatch/NoMatch';
 import PostDetails from './components/PostDetails/PostDetails';
+import Header from './components/Header/Header';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/header">
+          <Header />
         </Route>
         <Route path="/post/:postDetails">
           <PostDetails />

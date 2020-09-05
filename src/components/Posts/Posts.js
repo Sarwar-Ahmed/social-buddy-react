@@ -8,54 +8,65 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useHistory, Link } from 'react-router-dom';
-
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ShareIcon from '@material-ui/icons/Share';
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 768,
+  grow: {
+    flexGrow: 0.5,
   },
 });
 
 const Posts = (props) => {
-    const {title, body} = props.post;
+    const {title, body, id} = props.post;
     const classes = useStyles();
-    // const history = useHistory;
 
-    // const showPostDetailAndComment = () =>{
-    //     history.push(`/post/:postDetails`);
-    // }
+    const history = useHistory();
+
+    const showPostDetailAndComment = () =>{
+        history.push(`/post/${id}`);
+    }
 
     return (
-        <Card className={classes.root}>
-            <CardActionArea>
-                {/* <CardMedia
-                component="img"
-                alt="Contemplative Reptile"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="Contemplative Reptile"
-                /> */}
-                <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {body}
-                </Typography>
-                </CardContent>
-            </CardActionArea>
-            <CardActions>
-                <Link to={`/post/:postDetails`}>
+        <div>
+            <Card className={classes.root}>
+                <CardActionArea>
+                    {/* <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    height="140"
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                    /> */}
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {title}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {body}
+                            <Button size="small" color="primary" onClick={showPostDetailAndComment}>
+                            ... See More
+                            </Button>
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
                     <Button size="small" color="primary">
-                    Read More
+                    <ThumbUpIcon />
                     </Button>
-                </Link>
-                <Link to={`/post/:postDetails`}>
-                    <Button size="small" color="primary">
+                    
+                    <div className={classes.grow} />
+                    <Button size="small" color="primary" onClick={showPostDetailAndComment}>
                     Comments
                     </Button>
-                </Link>
-            </CardActions>
-        </Card>
+                    <div className={classes.grow}/>
+                    
+                    <Button size="small" color="primary">
+                    <ShareIcon />
+                    </Button>
+                    
+                </CardActions>
+            </Card>
+        </div>
     );
 };
 
