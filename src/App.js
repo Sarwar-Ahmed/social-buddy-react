@@ -21,9 +21,6 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/header">
-          <Header />
-        </Route>
         <Route path="/post/:postDetails">
           <PostDetails />
         </Route>
